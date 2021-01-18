@@ -1,0 +1,67 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #7979d2;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="https://images.vexels.com/media/users/3/182530/isolated/preview/ac6c35d2b02a5e46bc631cc2081b31c0-color-sweet-icon-by-vexels.png"
+        alt="" width="50" height="50">
+    </a>
+    <a class="navbar-brand" href="#">TATLI SÖZLÜK!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/']" aria-current="page">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/sorularim']" src="">Sorularım</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/profil']">
+            Profilim
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin']">
+            Admin
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="d-grid gap-2 d-md-flex mx-auto">
+      <button class="btn btn-primary mr-2" *ngIf="servis.oturumCheck()" [routerLink]="['soruekle']">Soru Ekle</button>
+      <button class="btn btn-primary" *ngIf="!servis.oturumCheck()" [routerLink]="['login']">Giriş Yap</button>
+      <button class="btn btn-success ml-2" *ngIf="!servis.oturumCheck()" [routerLink]="['signup']">Kayıt Ol</button>
+      <button class="btn btn-danger ml-2 " *ngIf="servis.oturumCheck()" (click)="signOut()">Çıkış Yap</button>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer class="footer mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-7 col-sm-5">
+        <h5>Adresimiz.</h5>
+        <address>
+          Kürüş mah. Merkez sok. Süleyman Vural APT. NO:134 Kat:1 Serik Antalya/Türkiye<br>
+          Tel.: +905428259143<br>
+          Fax: +905428259143<br>
+          Email: <a href="mailto:emreerdem520@gmail.com" class="text-white">emreerdem520@gmail.com</a>
+        </address>
+      </div>
+      <div class="col-auto justify-content-center">
+        <p>© Copyright 2020 TATLI SÖZLÜK!</p>
+        <img
+          src="https://images.vexels.com/media/users/3/182530/isolated/preview/ac6c35d2b02a5e46bc631cc2081b31c0-color-sweet-icon-by-vexels.png"
+          alt="" width="125" height="125">
+      </div>
+    </div>
+  </div>
+</footer>

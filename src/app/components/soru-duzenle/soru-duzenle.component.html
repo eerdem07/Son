@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h4></h4>
+      <div>
+        <!-- Sorunun düzenleneceği alanın form bölümü -->
+        <form #soruEkleForm="ngForm" (ngSubmit)="soruDuzenle()">
+          <h4>Soru Düzenle</h4>
+          <div class="mb-3">
+            <div class="form-group">
+              <label>Soru Adı</label>
+              <input type="text" class="form-control" name="soruadi" [(ngModel)]="seciliSoru.soruAd" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group">
+              <label>Soru</label>
+              <textarea rows="5" class="form-control" name="soru" [(ngModel)]="seciliSoru.soru" required>
+            </textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-success form-control" value="Soruyu Gönder!"
+              [disabled]="soruEkleForm.invalid">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

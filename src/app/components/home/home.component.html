@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="col-md-12 mt-2">
+        <div class="text-center">
+          <!-- Giren Kullanıcının adını yazdığı yer. Localstoragedan çekilir. -->
+          <h4>Hoşgeldiniz. {{adsoyad}}</h4>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-md-5" *ngFor="let soru of sorular">
+          <div class="card text-center mt-2">
+            <div class="card-header">
+              Soru
+            </div>
+            <div class="card-body">
+              <!-- Sorular ngFor ile yansıtılır. -->
+              <h5 class="card-title">{{soru.soruAd}}</h5>
+              <p class="card-text ">{{soru.soru}}</p>
+              <b>Eklenme Tarihi:</b>{{soru.kayTarih | date:'dd.MM.yyyy HH.mm.ss'}}
+            </div>
+            <div class="card-footer text-muted">
+              <!-- Soru sahibi değil ise silinemez. ngif ile kontrol edilir. -->
+              <a href="#" class="btn btn-primary" [routerLink]="['/sorudetay',soru.key]">Detay</a>
+              <a *ngIf="this.uid == soru.uid" href="#" class="btn btn-warning mx-2"
+                [routerLink]="['/soruduzenle',soru.key]">Düzenle</a>
+              <a *ngIf="this.uid == soru.uid" href="#" class="btn btn-danger mx-2" (click)="soruSil(soru.key!)">Sil</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: cornflowerblue;
+}
+
+.footer{
+    background-color: #7979d2;
+    margin:20px auto;
+    padding:20px 0px 20px 0px;
+}
+
+.address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}

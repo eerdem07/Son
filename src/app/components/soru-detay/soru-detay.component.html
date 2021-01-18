@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card">
+        <!-- Tek bir değer geleceği için for yapmayız tek gelinen tek değeri yazdırırz. -->
+        <div class="card-header">{{seciliSoru.soruAd}}</div>
+        <div class="card-body">{{seciliSoru.soru}}</div>
+        <div class="card-footer">{{seciliSoru.kayTarih | date:'dd.MM.yyyy HH.mm.ss'}}</div>
+      </div>
+      <!-- Burada click olduğu zaman sonuc.islem'i true yaparız buradaki amaç butona tıklanıca formun açılmasıdır. aşağıdaki formda *ngif ile kontrol edilmiştir. -->
+      <button class="btn btn-primary mt-2 btn-block" (click)="sonuc.islem = true">Yorum Ekle</button>
+      <form #yorumForm="ngForm" *ngIf="sonuc.islem">
+        <div class="card mt-2">
+          <div class="card-body">
+            <!-- Burada çarpı ikonuna tıklanınca. sonuc.islem false yapılır. ve ardındna form dosyası kapanır. -->
+            <button (click)="sonuc.islem = false" type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="form-group">
+              <label>Cevap</label>
+              <input [(ngModel)]="cevap.icerik" type="text" class="form-control" name="cevapadi" required>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button (click)="yorumEkle()" class="btn btn-success">Gönder</button>
+          </div>
+        </div>
+      </form>
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="display-4 text-center">Yorumlar</div>
+          <hr>
+          <!-- Burada sorunun cevaplarını for döngüsü ile ekrana  yazdırırz. Eğer cevaplar yoksa diye ? koyarız. -->
+          <div class="card  mt-2" *ngFor="let cevap of seciliSoru?.cevaplar">
+            <div class="card-header"><b>
+                {{cevap?.uye?.ad}}
+              </b></div>
+            <div class="card-body">
+              <p class="lead">
+                {{cevap.icerik}}
+              </p>
+            </div>
+            <div class="card-footer">
+              <!-- Sil kısmını ancak sahibi işlem yapabilecğei için bunları *ngif ile kontrol ederiz. -->>
+              <button class="btn btn-danger mx-2" *ngIf="this.uid == cevap.uid"
+                (click)="cevapSil(cevap.key!)">Sil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
